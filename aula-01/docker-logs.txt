@@ -1,0 +1,15 @@
+Evidência de execução do container — Aula 01
+Data do teste: 2026-08-26
+
+Logs da aplicação:
+Portfolio API rodando na porta 3000
+
+Container em execução:
+NAMES            IMAGE                  STATUS          PORTS
+portfolio-test   portfolio-aula01:1.0   Up              0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+
+Resposta de GET /:
+{"servico":"DevOps Portfolio API","aluno":"Andreyh Rodrigues de Souza","ra":"6325231","aula":"01 - Fundamentos de Git e Docker","status":"online"}
+
+Resposta de GET /health:
+{"status":"healthy","version":"1.0.0"}
