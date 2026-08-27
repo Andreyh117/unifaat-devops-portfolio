@@ -1,0 +1,68 @@
+# Orquestra os serviços da API, do banco de dados e do cache.
+services:
+  # API Node.js construída a partir do Dockerfile desta pasta.
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT}:3000"
+    environment:
+      PORT: "${PORT}"
+      NODE_ENV: "${NODE_ENV}"
+      DB_HOST: "${DB_HOST}"
+      DB_PORT: "${DB_PORT}"
+      DB_NAME: "${DB_NAME}"
+      DB_USER: "${DB_USER}"
+      DB_PASSWORD: "${DB_PASSWORD}"
+      REDIS_HOST: "${REDIS_HOST}"
+      REDIS_PORT: "${REDIS_PORT}"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - technova-network
+    restart: unless-stopped
+
+  # PostgreSQL persiste os dados no volume nomeado technova-postgres-data.
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: "${POSTGRES_DB}"
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    volumes:
+      - technova-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - technova-network
+    restart: unless-stopped
+
+  # Redis 7 fornece o cache da aplicação.
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - technova-network
+    restart: unless-stopped
+
+# Volume nomeado evita a perda de dados do PostgreSQL ao recriar containers.
+volumes:
+  technova-postgres-data:
+
+# Rede bridge isolada, compartilhada pelos três serviços.
+networks:
+  technova-network:
+    driver: bridge
