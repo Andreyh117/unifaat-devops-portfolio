@@ -1,0 +1,491 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_iam_group.developers will be created
+  + resource "aws_iam_group" "developers" {
+      + arn       = (known after apply)
+      + id        = (known after apply)
+      + name      = "6325231-technova-developers"
+      + path      = "/"
+      + unique_id = (known after apply)
+    }
+
+  # aws_iam_group.platform_eng will be created
+  + resource "aws_iam_group" "platform_eng" {
+      + arn       = (known after apply)
+      + id        = (known after apply)
+      + name      = "6325231-technova-platform-eng"
+      + path      = "/"
+      + unique_id = (known after apply)
+    }
+
+  # aws_iam_group_policy_attachment.dev_deny_destructive will be created
+  + resource "aws_iam_group_policy_attachment" "dev_deny_destructive" {
+      + group      = "6325231-technova-developers"
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+    }
+
+  # aws_iam_group_policy_attachment.dev_s3_read will be created
+  + resource "aws_iam_group_policy_attachment" "dev_s3_read" {
+      + group      = "6325231-technova-developers"
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+    }
+
+  # aws_iam_group_policy_attachment.platform_ec2_s3_full will be created
+  + resource "aws_iam_group_policy_attachment" "platform_ec2_s3_full" {
+      + group      = "6325231-technova-platform-eng"
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+    }
+
+  # aws_iam_instance_profile.ec2_profile will be created
+  + resource "aws_iam_instance_profile" "ec2_profile" {
+      + arn         = (known after apply)
+      + create_date = (known after apply)
+      + id          = (known after apply)
+      + name        = "6325231-technova-ec2-profile"
+      + name_prefix = (known after apply)
+      + path        = "/"
+      + role        = "6325231-technova-ec2-role"
+      + tags        = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + tags_all    = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + unique_id   = (known after apply)
+    }
+
+  # aws_iam_policy.deny_destructive will be created
+  + resource "aws_iam_policy" "deny_destructive" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "Deny explícito para exclusões no S3 e término de instâncias EC2"
+      + id               = (known after apply)
+      + name             = "6325231-technova-deny-destructive"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "s3:Delete*",
+                          + "ec2:Terminate*",
+                        ]
+                      + Effect   = "Deny"
+                      + Resource = "*"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags             = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + tags_all         = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+    }
+
+  # aws_iam_policy.ec2_role_policy will be created
+  + resource "aws_iam_policy" "ec2_role_policy" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + id               = (known after apply)
+      + name             = "6325231-technova-ec2-role-s3-policy"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "s3:GetObject",
+                          + "s3:PutObject",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:s3:::technova-app-data-*/*"
+                    },
+                  + {
+                      + Action   = [
+                          + "s3:ListBucket",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:s3:::technova-app-data-*"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags             = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + tags_all         = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+    }
+
+  # aws_iam_policy.ec2_s3_full will be created
+  + resource "aws_iam_policy" "ec2_s3_full" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "Operação de EC2 por tag e leitura/escrita nos buckets TechNova"
+      + id               = (known after apply)
+      + name             = "6325231-technova-ec2-s3-full"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "ec2:Describe*",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                    },
+                  + {
+                      + Action    = [
+                          + "ec2:StartInstances",
+                          + "ec2:StopInstances",
+                        ]
+                      + Condition = {
+                          + StringEquals = {
+                              + "aws:ResourceTag/Project" = "TechNova"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Resource  = "*"
+                    },
+                  + {
+                      + Action   = [
+                          + "s3:GetObject",
+                          + "s3:PutObject",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:s3:::technova-*/*"
+                    },
+                  + {
+                      + Action   = [
+                          + "s3:ListBucket",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:s3:::technova-*"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags             = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + tags_all         = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+    }
+
+  # aws_iam_policy.s3_read will be created
+  + resource "aws_iam_policy" "s3_read" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + description      = "Permite apenas leitura nos buckets technova"
+      + id               = (known after apply)
+      + name             = "6325231-technova-s3-read"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "s3:ListBucket",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = [
+                          + "arn:aws:s3:::technova-*",
+                        ]
+                    },
+                  + {
+                      + Action   = [
+                          + "s3:GetObject",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = [
+                          + "arn:aws:s3:::technova-*/*",
+                        ]
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id        = (known after apply)
+      + tags             = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + tags_all         = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+    }
+
+  # aws_iam_role.ec2_role will be created
+  + resource "aws_iam_role" "ec2_role" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "6325231-technova-ec2-role"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + tags_all              = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role_policy_attachment.ec2_role_attach will be created
+  + resource "aws_iam_role_policy_attachment" "ec2_role_attach" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "6325231-technova-ec2-role"
+    }
+
+  # aws_iam_user.juliana will be created
+  + resource "aws_iam_user" "juliana" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "6325231-juliana-dev"
+      + path          = "/"
+      + tags          = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + tags_all      = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.lucas will be created
+  + resource "aws_iam_user" "lucas" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "6325231-lucas-intern"
+      + path          = "/"
+      + tags          = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + tags_all      = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user.rafael will be created
+  + resource "aws_iam_user" "rafael" {
+      + arn           = (known after apply)
+      + force_destroy = false
+      + id            = (known after apply)
+      + name          = "6325231-rafael-platform"
+      + path          = "/"
+      + tags          = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + tags_all      = {
+          + "Aluno"       = "Andreyh Rodrigues de Souza"
+          + "Aula"        = "03"
+          + "Disciplina"  = "DevOps - UniFAAT 2026-2"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "TechNova"
+          + "RA"          = "6325231"
+        }
+      + unique_id     = (known after apply)
+    }
+
+  # aws_iam_user_group_membership.juliana_membership will be created
+  + resource "aws_iam_user_group_membership" "juliana_membership" {
+      + groups = [
+          + "6325231-technova-developers",
+        ]
+      + id     = (known after apply)
+      + user   = "6325231-juliana-dev"
+    }
+
+  # aws_iam_user_group_membership.lucas_membership will be created
+  + resource "aws_iam_user_group_membership" "lucas_membership" {
+      + groups = [
+          + "6325231-technova-developers",
+        ]
+      + id     = (known after apply)
+      + user   = "6325231-lucas-intern"
+    }
+
+  # aws_iam_user_group_membership.rafael_membership will be created
+  + resource "aws_iam_user_group_membership" "rafael_membership" {
+      + groups = [
+          + "6325231-technova-developers",
+          + "6325231-technova-platform-eng",
+        ]
+      + id     = (known after apply)
+      + user   = "6325231-rafael-platform"
+    }
+
+Plan: 18 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + iam_groups            = [
+      + "6325231-technova-developers",
+      + "6325231-technova-platform-eng",
+    ]
+  + iam_users             = [
+      + "6325231-juliana-dev",
+      + "6325231-rafael-platform",
+      + "6325231-lucas-intern",
+    ]
+  + instance_profile_name = "6325231-technova-ec2-profile"
+  + policy_arns           = {
+      + deny_destructive = (known after apply)
+      + ec2_role_s3      = (known after apply)
+      + ec2_s3_full      = (known after apply)
+      + s3_read          = (known after apply)
+    }
+  + service_role_arn      = (known after apply)
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
