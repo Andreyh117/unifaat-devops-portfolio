@@ -1,0 +1,53 @@
+aws_dynamodb_table.lock: Refreshing state... [id=technova-tf-lock-6325231]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_s3_bucket_public_access_block.state will be created
+  + resource "aws_s3_bucket_public_access_block" "state" {
+      + block_public_acls       = true
+      + block_public_policy     = true
+      + bucket                  = "technova-state-6325231-20260917225656960600000001"
+      + id                      = (known after apply)
+      + ignore_public_acls      = true
+      + restrict_public_buckets = true
+    }
+
+  # aws_s3_bucket_server_side_encryption_configuration.state will be created
+  + resource "aws_s3_bucket_server_side_encryption_configuration" "state" {
+      + bucket = "technova-state-6325231-20260917225656960600000001"
+      + id     = (known after apply)
+
+      + rule {
+          + apply_server_side_encryption_by_default {
+              + sse_algorithm     = "AES256"
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # aws_s3_bucket_versioning.state will be created
+  + resource "aws_s3_bucket_versioning" "state" {
+      + bucket = "technova-state-6325231-20260917225656960600000001"
+      + id     = (known after apply)
+
+      + versioning_configuration {
+          + mfa_delete = (known after apply)
+          + status     = "Enabled"
+        }
+    }
+
+Plan: 3 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + bucket_name    = "technova-state-6325231-20260917225656960600000001"
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: /tmp/technova-6325231-backend-fix.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "/tmp/technova-6325231-backend-fix.tfplan"

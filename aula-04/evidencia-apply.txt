@@ -1,0 +1,51 @@
+aws_key_pair.main: Creating...
+aws_vpc.main: Creating...
+aws_key_pair.main: Creation complete after 1s [id=technova-04-20260917225237721500000001]
+aws_vpc.main: Still creating... [00m10s elapsed]
+aws_vpc.main: Creation complete after 14s [id=vpc-0fde8d4c7eb17deed]
+aws_internet_gateway.main: Creating...
+aws_default_route_table.private: Creating...
+aws_subnet.main["private_a"]: Creating...
+aws_security_group.db: Creating...
+aws_subnet.main["public_a"]: Creating...
+aws_subnet.main["public_b"]: Creating...
+aws_subnet.main["private_b"]: Creating...
+aws_security_group.api: Creating...
+aws_default_route_table.private: Creation complete after 1s [id=rtb-027062251cb15b68c]
+aws_internet_gateway.main: Creation complete after 1s [id=igw-08dd51b9ac41a2f6d]
+aws_subnet.main["private_a"]: Creation complete after 1s [id=subnet-0fc70c0c6e4e377b6]
+aws_route_table.public: Creating...
+aws_route_table.public: Creation complete after 2s [id=rtb-01e1da7da623adfdf]
+aws_subnet.main["private_b"]: Creation complete after 4s [id=subnet-0681802350b7a28ae]
+aws_security_group.db: Creation complete after 4s [id=sg-0bcd520d86416668a]
+aws_security_group.api: Creation complete after 4s [id=sg-03825edf7f7d002cf]
+aws_subnet.main["public_a"]: Still creating... [00m10s elapsed]
+aws_subnet.main["public_b"]: Still creating... [00m10s elapsed]
+aws_subnet.main["public_b"]: Creation complete after 12s [id=subnet-0a0e5084053c6c5c5]
+aws_subnet.main["public_a"]: Creation complete after 12s [id=subnet-0b2e6ebe64ab89197]
+aws_route_table_association.public["public_b"]: Creating...
+aws_route_table_association.public["public_a"]: Creating...
+aws_route_table_association.public["public_b"]: Creation complete after 1s [id=rtbassoc-04c5a03803d0255af]
+aws_route_table_association.public["public_a"]: Creation complete after 1s [id=rtbassoc-080a32b8897378b2c]
+aws_instance.api: Creating...
+aws_instance.api: Still creating... [00m10s elapsed]
+aws_instance.api: Creation complete after 16s [id=i-0175ea5a67b644c52]
+
+Apply complete! Resources: 14 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+api_security_group_id = "sg-03825edf7f7d002cf"
+api_url = "http://52.90.186.27:3000"
+db_security_group_id = "sg-0bcd520d86416668a"
+ec2_public_ip = "52.90.186.27"
+private_subnet_ids = [
+  "subnet-0fc70c0c6e4e377b6",
+  "subnet-0681802350b7a28ae",
+]
+public_subnet_ids = [
+  "subnet-0b2e6ebe64ab89197",
+  "subnet-0a0e5084053c6c5c5",
+]
+ssh_command = "ssh -i ~/.ssh/id_ed25519 ec2-user@52.90.186.27"
+vpc_id = "vpc-0fde8d4c7eb17deed"

@@ -1,0 +1,70 @@
+aws_key_pair.main: Creating...
+aws_vpc.main: Creating...
+aws_key_pair.main: Creation complete after 1s [id=technova-05-20260917225652932800000001]
+aws_vpc.main: Still creating... [00m10s elapsed]
+aws_vpc.main: Creation complete after 14s [id=vpc-0a6fc11b3c813babd]
+aws_internet_gateway.main: Creating...
+aws_default_route_table.private: Creating...
+aws_subnet.main["public_a"]: Creating...
+aws_subnet.main["private_b"]: Creating...
+aws_security_group.db: Creating...
+aws_subnet.main["private_a"]: Creating...
+aws_security_group.api: Creating...
+aws_default_route_table.private: Creation complete after 1s [id=rtb-0c5d11acdf4a83c7b]
+aws_internet_gateway.main: Creation complete after 1s [id=igw-08a46c41d3b8f7689]
+aws_route_table.public: Creating...
+aws_subnet.main["private_b"]: Creation complete after 1s [id=subnet-0609d82dad1bb2e0f]
+aws_subnet.main["private_a"]: Creation complete after 1s [id=subnet-0f1a027dd848b275e]
+aws_route_table.public: Creation complete after 2s [id=rtb-0c342f5cb8c1230df]
+aws_security_group.db: Creation complete after 4s [id=sg-07016b904f0040393]
+aws_security_group.api: Creation complete after 4s [id=sg-0669e36533995e14d]
+aws_subnet.main["public_a"]: Still creating... [00m10s elapsed]
+aws_subnet.main["public_a"]: Creation complete after 11s [id=subnet-048a5eaf2b44e9dea]
+aws_route_table_association.public["public_a"]: Creating...
+aws_db_subnet_group.main: Creating...
+aws_route_table_association.public["public_a"]: Creation complete after 1s [id=rtbassoc-04920697d25a74181]
+aws_instance.api: Creating...
+aws_db_subnet_group.main: Creation complete after 3s [id=technova-db-6325231]
+aws_db_instance.main: Creating...
+aws_instance.api: Still creating... [00m10s elapsed]
+aws_db_instance.main: Still creating... [00m10s elapsed]
+aws_instance.api: Creation complete after 16s [id=i-0d8de93b28a115b62]
+aws_db_instance.main: Still creating... [00m20s elapsed]
+aws_db_instance.main: Still creating... [00m30s elapsed]
+aws_db_instance.main: Still creating... [00m40s elapsed]
+aws_db_instance.main: Still creating... [00m50s elapsed]
+aws_db_instance.main: Still creating... [01m00s elapsed]
+aws_db_instance.main: Still creating... [01m10s elapsed]
+aws_db_instance.main: Still creating... [01m20s elapsed]
+aws_db_instance.main: Still creating... [01m30s elapsed]
+aws_db_instance.main: Still creating... [01m40s elapsed]
+aws_db_instance.main: Still creating... [01m50s elapsed]
+aws_db_instance.main: Still creating... [02m00s elapsed]
+aws_db_instance.main: Still creating... [02m10s elapsed]
+aws_db_instance.main: Still creating... [02m20s elapsed]
+aws_db_instance.main: Still creating... [02m30s elapsed]
+aws_db_instance.main: Still creating... [02m40s elapsed]
+aws_db_instance.main: Still creating... [02m50s elapsed]
+aws_db_instance.main: Still creating... [03m00s elapsed]
+aws_db_instance.main: Still creating... [03m10s elapsed]
+aws_db_instance.main: Still creating... [03m20s elapsed]
+aws_db_instance.main: Still creating... [03m30s elapsed]
+aws_db_instance.main: Still creating... [03m40s elapsed]
+aws_db_instance.main: Still creating... [03m50s elapsed]
+aws_db_instance.main: Still creating... [04m00s elapsed]
+aws_db_instance.main: Still creating... [04m10s elapsed]
+aws_db_instance.main: Still creating... [04m20s elapsed]
+aws_db_instance.main: Still creating... [04m30s elapsed]
+aws_db_instance.main: Still creating... [04m40s elapsed]
+aws_db_instance.main: Still creating... [04m50s elapsed]
+aws_db_instance.main: Still creating... [05m00s elapsed]
+aws_db_instance.main: Still creating... [05m10s elapsed]
+aws_db_instance.main: Creation complete after 5m11s [id=db-KEV3RUQQCMENR6CXMTJKOPRVTI]
+
+Apply complete! Resources: 14 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+connection_string = "psql -h technova-db-6325231.czowxwnrobnw.us-east-1.rds.amazonaws.com -U technova_admin -d technova"
+ec2_public_ip = "54.172.239.112"
+rds_endpoint = "technova-db-6325231.czowxwnrobnw.us-east-1.rds.amazonaws.com:5432"

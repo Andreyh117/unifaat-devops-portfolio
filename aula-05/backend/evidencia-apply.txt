@@ -1,0 +1,13 @@
+aws_s3_bucket_public_access_block.state: Creating...
+aws_s3_bucket_server_side_encryption_configuration.state: Creating...
+aws_s3_bucket_versioning.state: Creating...
+aws_s3_bucket_public_access_block.state: Creation complete after 1s [id=technova-state-6325231-20260917225656960600000001]
+aws_s3_bucket_server_side_encryption_configuration.state: Creation complete after 1s [id=technova-state-6325231-20260917225656960600000001]
+aws_s3_bucket_versioning.state: Creation complete after 2s [id=technova-state-6325231-20260917225656960600000001]
+
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+bucket_name = "technova-state-6325231-20260917225656960600000001"
+dynamodb_table = "technova-tf-lock-6325231"
