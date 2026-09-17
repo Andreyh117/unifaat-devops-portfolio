@@ -1,0 +1,5 @@
+ id |     product     | quantity 
+----+-----------------+----------
+  1 | Pedido TechNova |        2
+(1 row)
+

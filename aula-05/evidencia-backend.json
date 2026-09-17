@@ -1,0 +1,71 @@
+{
+  "bucket": "technova-state-6325231-20260917225656960600000001",
+  "versioning": {
+    "Status": "Enabled"
+  },
+  "encryption": {
+    "ServerSideEncryptionConfiguration": {
+      "Rules": [
+        {
+          "ApplyServerSideEncryptionByDefault": {
+            "SSEAlgorithm": "AES256"
+          },
+          "BucketKeyEnabled": false,
+          "BlockedEncryptionTypes": {
+            "EncryptionType": [
+              "SSE-C"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "public_access_block": {
+    "PublicAccessBlockConfiguration": {
+      "BlockPublicAcls": true,
+      "IgnorePublicAcls": true,
+      "BlockPublicPolicy": true,
+      "RestrictPublicBuckets": true
+    }
+  },
+  "tags": {
+    "TagSet": [
+      {
+        "Key": "Project",
+        "Value": "TechNova"
+      },
+      {
+        "Key": "Owner",
+        "Value": "6325231"
+      },
+      {
+        "Key": "ManagedBy",
+        "Value": "AWSCLI"
+      },
+      {
+        "Key": "Aula",
+        "Value": "05"
+      },
+      {
+        "Key": "Name",
+        "Value": "technova-state"
+      }
+    ]
+  },
+  "dynamodb": {
+    "Name": "technova-tf-lock-6325231",
+    "Status": "ACTIVE",
+    "KeySchema": [
+      {
+        "AttributeName": "LockID",
+        "KeyType": "HASH"
+      }
+    ],
+    "AttributeDefinitions": [
+      {
+        "AttributeName": "LockID",
+        "AttributeType": "S"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+
+Warning: Deprecated Parameter
+
+The parameter "dynamodb_table" is deprecated. Use parameter "use_lockfile"
+instead.
+Acquiring state lock. This may take a few moments...
+data.aws_availability_zones.available: Reading...
+data.aws_ami.al2023: Reading...
+aws_key_pair.main: Refreshing state... [id=technova-05-20260917225652932800000001]
+aws_vpc.main: Refreshing state... [id=vpc-0a6fc11b3c813babd]
+data.aws_availability_zones.available: Read complete after 1s [id=us-east-1]
+data.aws_ami.al2023: Read complete after 2s [id=ami-008deafd6f62cdfc8]
+aws_internet_gateway.main: Refreshing state... [id=igw-08a46c41d3b8f7689]
+aws_default_route_table.private: Refreshing state... [id=rtb-0c5d11acdf4a83c7b]
+aws_subnet.main["public_a"]: Refreshing state... [id=subnet-048a5eaf2b44e9dea]
+aws_subnet.main["private_a"]: Refreshing state... [id=subnet-0f1a027dd848b275e]
+aws_subnet.main["private_b"]: Refreshing state... [id=subnet-0609d82dad1bb2e0f]
+aws_security_group.db: Refreshing state... [id=sg-07016b904f0040393]
+aws_security_group.api: Refreshing state... [id=sg-0669e36533995e14d]
+aws_route_table.public: Refreshing state... [id=rtb-0c342f5cb8c1230df]
+aws_db_subnet_group.main: Refreshing state... [id=technova-db-6325231]
+aws_route_table_association.public["public_a"]: Refreshing state... [id=rtbassoc-04920697d25a74181]
+aws_instance.api: Refreshing state... [id=i-0d8de93b28a115b62]
+aws_db_instance.main: Refreshing state... [id=db-KEV3RUQQCMENR6CXMTJKOPRVTI]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
