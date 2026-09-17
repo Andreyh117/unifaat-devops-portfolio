@@ -1,0 +1,507 @@
+data.aws_availability_zones.available: Reading...
+data.aws_ami.al2023: Reading...
+data.aws_availability_zones.available: Read complete after 1s [id=us-east-1]
+data.aws_ami.al2023: Read complete after 2s [id=ami-008deafd6f62cdfc8]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_default_route_table.private will be created
+  + resource "aws_default_route_table" "private" {
+      + arn                    = (known after apply)
+      + default_route_table_id = (known after apply)
+      + id                     = (known after apply)
+      + owner_id               = (known after apply)
+      + route                  = []
+      + tags                   = {
+          + "Name" = "technova-private-default-rt"
+        }
+      + tags_all               = {
+          + "Aula"        = "04"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "technova-private-default-rt"
+          + "Owner"       = "6325231"
+          + "Project"     = "TechNova"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_instance.api will be created
+  + resource "aws_instance" "api" {
+      + ami                                  = "ami-008deafd6f62cdfc8"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + cpu_core_count                       = (known after apply)
+      + cpu_threads_per_core                 = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = "LabInstanceProfile"
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t2.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Name" = "technova-api"
+        }
+      + tags_all                             = {
+          + "Aula"        = "04"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "technova-api"
+          + "Owner"       = "6325231"
+          + "Project"     = "TechNova"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = "f78adfaefaa28804bdd5cfc78382245431c85167"
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = true
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options (known after apply)
+
+      + network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = (known after apply)
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags                  = {
+              + "Aula"        = "04"
+              + "Environment" = "development"
+              + "ManagedBy"   = "Terraform"
+              + "Name"        = "technova-api-root"
+              + "Owner"       = "6325231"
+              + "Project"     = "TechNova"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = 8
+          + volume_type           = "gp2"
+        }
+    }
+
+  # aws_internet_gateway.main will be created
+  + resource "aws_internet_gateway" "main" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + tags     = {
+          + "Name" = "technova-igw"
+        }
+      + tags_all = {
+          + "Aula"        = "04"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "technova-igw"
+          + "Owner"       = "6325231"
+          + "Project"     = "TechNova"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # aws_key_pair.main will be created
+  + resource "aws_key_pair" "main" {
+      + arn             = (known after apply)
+      + fingerprint     = (known after apply)
+      + id              = (known after apply)
+      + key_name        = (known after apply)
+      + key_name_prefix = "technova-04-"
+      + key_pair_id     = (known after apply)
+      + key_type        = (known after apply)
+      + public_key      = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICs+Y/OVSrSdUuvRGj5o2ot+SQOPQcVQ5uFYDMbA2vbl rodriguesandreyh@gmail.com"
+      + tags            = {
+          + "Name" = "technova-key"
+        }
+      + tags_all        = {
+          + "Aula"        = "04"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "technova-key"
+          + "Owner"       = "6325231"
+          + "Project"     = "TechNova"
+        }
+    }
+
+  # aws_route_table.public will be created
+  + resource "aws_route_table" "public" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = [
+          + {
+              + cidr_block                 = "0.0.0.0/0"
+              + gateway_id                 = (known after apply)
+                # (11 unchanged attributes hidden)
+            },
+        ]
+      + tags             = {
+          + "Name" = "technova-public-rt"
+        }
+      + tags_all         = {
+          + "Aula"        = "04"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "technova-public-rt"
+          + "Owner"       = "6325231"
+          + "Project"     = "TechNova"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # aws_route_table_association.public["public_a"] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # aws_route_table_association.public["public_b"] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # aws_security_group.api will be created
+  + resource "aws_security_group" "api" {
+      + arn                    = (known after apply)
+      + description            = "Managed by Terraform"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+                # (1 unchanged attribute hidden)
+            },
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + from_port        = 3000
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 3000
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + name                   = (known after apply)
+      + name_prefix            = "technova-api-"
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "technova-api-sg"
+        }
+      + tags_all               = {
+          + "Aula"        = "04"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "technova-api-sg"
+          + "Owner"       = "6325231"
+          + "Project"     = "TechNova"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_security_group.db will be created
+  + resource "aws_security_group" "db" {
+      + arn                    = (known after apply)
+      + description            = "Managed by Terraform"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "10.0.0.0/16",
+                ]
+              + from_port        = 5432
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 5432
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + name                   = (known after apply)
+      + name_prefix            = "technova-db-"
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "technova-db-sg"
+        }
+      + tags_all               = {
+          + "Aula"        = "04"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "technova-db-sg"
+          + "Owner"       = "6325231"
+          + "Project"     = "TechNova"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_subnet.main["private_a"] will be created
+  + resource "aws_subnet" "main" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "us-east-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.2.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = false
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "Name" = "technova-private_a"
+        }
+      + tags_all                                       = {
+          + "Aula"        = "04"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "technova-private_a"
+          + "Owner"       = "6325231"
+          + "Project"     = "TechNova"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # aws_subnet.main["private_b"] will be created
+  + resource "aws_subnet" "main" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "us-east-1b"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.4.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = false
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "Name" = "technova-private_b"
+        }
+      + tags_all                                       = {
+          + "Aula"        = "04"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "technova-private_b"
+          + "Owner"       = "6325231"
+          + "Project"     = "TechNova"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # aws_subnet.main["public_a"] will be created
+  + resource "aws_subnet" "main" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "us-east-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.1.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "Name" = "technova-public_a"
+        }
+      + tags_all                                       = {
+          + "Aula"        = "04"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "technova-public_a"
+          + "Owner"       = "6325231"
+          + "Project"     = "TechNova"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # aws_subnet.main["public_b"] will be created
+  + resource "aws_subnet" "main" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "us-east-1b"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.3.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "Name" = "technova-public_b"
+        }
+      + tags_all                                       = {
+          + "Aula"        = "04"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "technova-public_b"
+          + "Owner"       = "6325231"
+          + "Project"     = "TechNova"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # aws_vpc.main will be created
+  + resource "aws_vpc" "main" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "10.0.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = true
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + tags                                 = {
+          + "Name" = "technova-vpc"
+        }
+      + tags_all                             = {
+          + "Aula"        = "04"
+          + "Environment" = "development"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "technova-vpc"
+          + "Owner"       = "6325231"
+          + "Project"     = "TechNova"
+        }
+    }
+
+Plan: 14 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + api_security_group_id = (known after apply)
+  + api_url               = (known after apply)
+  + db_security_group_id  = (known after apply)
+  + ec2_public_ip         = (known after apply)
+  + private_subnet_ids    = [
+      + (known after apply),
+      + (known after apply),
+    ]
+  + public_subnet_ids     = [
+      + (known after apply),
+      + (known after apply),
+    ]
+  + ssh_command           = (known after apply)
+  + vpc_id                = (known after apply)
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: /tmp/technova-6325231-aula04.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "/tmp/technova-6325231-aula04.tfplan"
