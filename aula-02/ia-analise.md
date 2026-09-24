@@ -73,3 +73,10 @@ volumes:
 - **Tempo gasto validando/corrigindo:** aproximadamente 25 minutos.
 - **Nota para o output da IA (1-10):** 6/10.
 - **Usaria novamente para este tipo de tarefa?** Sim. A IA acelera o rascunho, mas a validação dos requisitos, da segurança das variáveis e do comportamento do Docker Compose continua sendo responsabilidade de quem desenvolve.
+
+## Revisão técnica em 24/09/2026
+
+O registro acima foi preservado da entrega anterior. Nesta revisão, o mapeamento
+da API passou de `${PORT}:3000` para `${PORT}:${PORT}`: o processo Node também
+escuta em `PORT`, portanto a porta interna precisa acompanhar a variável.
+O teste usa `PORT=13002` para validar essa configuração.
