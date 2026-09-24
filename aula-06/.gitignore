@@ -1,0 +1,11 @@
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.auto.tfvars
+*.auto.tfvars.json
+.env
+*.pem
+crash.log
+crash.*.log
+# terraform.tfvars contém apenas parâmetros públicos exigidos pelo TF.
